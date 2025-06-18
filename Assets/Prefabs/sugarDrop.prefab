@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6508573553253932009}
   - component: {fileID: 3662872390138781651}
   - component: {fileID: 8542053197019399798}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6249415800871844390}
   - component: {fileID: 937262490672862088}
   - component: {fileID: 7183781524278188905}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sugarDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

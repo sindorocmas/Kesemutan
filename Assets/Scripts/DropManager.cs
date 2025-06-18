@@ -7,13 +7,16 @@ public class DropManager : MonoBehaviour
     //jumlah yang didrop
     private int itemNum;
 
+    //lokasi instantiate sugardrop
+    private Transform enemyPos;
     //enemy type untuk berapa yang didrop
     private float enemyNum;
 
     //multiplier yang bisa di upgrade
     private static float dropMultiplier;
     private static float dropMultiplierDiff;
-    private Transform enemyPos;
+    private static float dropMultiplierPrice;
+    private static int dropUpgradeLevel;
     public static int totalSugarDropped = 0;
 
     private void Start()
@@ -21,6 +24,8 @@ public class DropManager : MonoBehaviour
         enemyPos = GetComponent<Transform>();
         dropMultiplier = 5;
         dropMultiplierDiff = 1.5f;
+        dropMultiplierPrice = 50;
+        dropUpgradeLevel = 1;
     }
 
     public void upgradeDropRate()
@@ -29,6 +34,17 @@ public class DropManager : MonoBehaviour
         if (dropMultiplierDiff > 1.2)
         {
             dropMultiplierDiff -= 0.1f;
+        }
+
+        if (dropMultiplierPrice < totalSugarDropped && dropUpgradeLevel < 3)
+        {
+            totalSugarDropped -= dropMultiplierPrice;
+            dropMultiplierPrice += 50;
+            dropUpgradeLevel++;
+        }
+        else if (dropMultiplierPrice < totalSugarDropped)
+        {
+            Debug.Log("Reached maximum drop rate level: 3");
         }
         Debug.Log("Drop mutliplier rn: " + dropMultiplier);
     }
