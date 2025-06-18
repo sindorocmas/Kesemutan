@@ -15,7 +15,7 @@ UserSettings/
 *.sln
 *.user
 *.suo
-
+.vs/
 # Crashlytics
 .crashlytics/
 
