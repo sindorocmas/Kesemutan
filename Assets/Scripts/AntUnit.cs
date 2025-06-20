@@ -1,3 +1,4 @@
+using System.Buffers.Text;
 using UnityEngine;
 
 public enum AntType { Worker, Soldier, Drone }
@@ -17,6 +18,10 @@ public class AntUnit : MonoBehaviour
     private AntState currentState = AntState.Idle;
     private EnemyUnit targetEnemy;
     private float lastAttackTime;
+
+    public AntType GetUnitType() => type;
+    public int GetCurrentHP() => currentHP;
+    public int GetCurrentATK() => attackDamage;
 
     private void Update()
     {
@@ -116,9 +121,20 @@ public class AntUnit : MonoBehaviour
     {
         Destroy(gameObject);
     }
-   /* private void OnDestroy()
+
+    public void UpgradeHP(int amount)
     {
-        if (PlayerBase.instance != null)
-            PlayerBase.instance.spawnedUnits.Remove(this);
-    } */
+        maxHP += amount;
+    }
+
+    public void UpgradeATK(int amount)
+    {
+        attackDamage += amount;
+    }
+
+    /* private void OnDestroy()
+     {
+         if (PlayerBase.instance != null)
+             PlayerBase.instance.spawnedUnits.Remove(this);
+     } */
 }
