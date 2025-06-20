@@ -20,21 +20,17 @@ public class PlayerBase : MonoBehaviour
 
     private void Start()
     {
-        // Inisialisasi posisi base
         float baseX = Camera.main.ViewportToWorldPoint(new Vector3(0.1f, 0, 0)).x;
         transform.position = new Vector2(baseX, transform.position.y);
 
-        // Setup spawn point jika belum ada
         if (spawnPoint == null)
         {
             CreateSpawnPoint();
         }
 
-        // Inisialisasi health
         currentHealth = maxHealth;
         UpdateHealthUI();
 
-        // Tambahkan collider otomatis
         SetupBaseCollider();
     }
 
@@ -58,7 +54,6 @@ public class PlayerBase : MonoBehaviour
         currentHealth -= damage;
         UpdateHealthUI();
 
-        // Play effects
         if (damageEffect != null) damageEffect.Play();
         if (damageSound != null) AudioSource.PlayClipAtPoint(damageSound, transform.position);
 
@@ -81,10 +76,8 @@ public class PlayerBase : MonoBehaviour
     private void BaseDestroyed()
     {
         Debug.Log("Player Base Destroyed!");
-        // Tambahkan efek ledakan/animasi
         Destroy(gameObject);
 
-        // Trigger game over
         GameManager.instance.GameOver();
     }
 
@@ -101,10 +94,9 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    // Unit Spawning Methods
     public void SpawnWorker()
     {
-        if (GameManager.instance.SpendSugar(5))
+        if (SugarManager.instance.SpendSugar(15))
         {
             Instantiate(workerPrefab, spawnPoint.position, Quaternion.identity);
         }
@@ -112,7 +104,7 @@ public class PlayerBase : MonoBehaviour
 
     public void SpawnSoldier()
     {
-        if (GameManager.instance.SpendSugar(7))
+        if (SugarManager.instance.SpendSugar(20))
         {
             Instantiate(soldierPrefab, spawnPoint.position, Quaternion.identity);
         }
@@ -120,15 +112,13 @@ public class PlayerBase : MonoBehaviour
 
     public void SpawnDrone()
     {
-        if (GameManager.instance.SpendSugar(4))
+        if (SugarManager.instance.SpendSugar(40))
         {
             Instantiate(dronePrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 
    // public List<AntUnit> spawnedUnits = new List<AntUnit>();
-
-   
 
     private void Update()
     {

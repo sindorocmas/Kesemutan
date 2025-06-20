@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6508573553253932009}
   - component: {fileID: 3662872390138781651}
   - component: {fileID: 8542053197019399798}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5287327, y: 0.5287327, z: 0.5287327}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6742141377997355127}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 6249415800871844390}
   - component: {fileID: 937262490672862088}
   - component: {fileID: 7183781524278188905}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: sugarDrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.38, y: 0.55, z: 0}
-  m_LocalScale: {x: 0.51386, y: 0.51386, z: 0.51386}
+  m_LocalScale: {x: 1.2269435, y: 1.2269435, z: 1.2269435}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6508573553253932009}

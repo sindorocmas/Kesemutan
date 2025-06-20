@@ -26,6 +26,9 @@ public class EnemyUnit : MonoBehaviour
     private bool shouldTargetBase = false;
     private List<AntUnit> allAntUnits = new List<AntUnit>();
 
+
+
+
     private void Start()
     {
         currentHP = maxHP;
@@ -178,9 +181,13 @@ public class EnemyUnit : MonoBehaviour
 
     private void Die()
     {
-        if (GameManager.instance != null)
+        
+        //SAMBUNG KE GULA (FEI)
+        if (DropManager.instance != null)
         {
-            GameManager.instance.AddSugar(Random.Range(1, 4));
+            DropManager.instance.DropItem(transform.position, type);
+            Debug.Log("Dropped sugar cubes");
+            Destroy(gameObject);
         }
         Destroy(gameObject);
     }

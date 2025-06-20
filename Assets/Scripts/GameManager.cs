@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            UpdateSugarUI(); // Update UI saat awal
         }
         else
         {
@@ -23,34 +22,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool SpendSugar(int amount)
-    {
-        if (sugar >= amount)
-        {
-            sugar -= amount;
-            UpdateSugarUI();
-            return true;
-        }
-        return false;
-    }
-
-    public void AddSugar(int amount)
-    {
-        sugar += amount;
-        UpdateSugarUI();
-    }
-
-    private void UpdateSugarUI()
-    {
-        if (sugarText != null) // Null check penting!
-        {
-            sugarText.text = "Sugar: " + sugar;
-        }
-        else
-        {
-            Debug.LogWarning("Sugar Text UI not assigned!");
-        }
-    }
     public void GameOver()
     {
         Debug.Log("Game Over! Keluar aplikasi...");
