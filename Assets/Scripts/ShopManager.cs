@@ -7,7 +7,7 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     [SerializeField] private Base baseunit;
-    [SerializeField] private List<Unit> units;
+    [SerializeField] private List<AntUnit> units;
     [SerializeField] private int playerResource = 500;
     [SerializeField] private int upgradeUnitCost = 20;
     [SerializeField] private int upgradeBaseCost = 100;
@@ -70,9 +70,9 @@ public class ShopManager : MonoBehaviour
 
     void UpdateUnitStatus()
     {
-        unit1Text.text = $"{units[0].GetUnitName()}\nHP: {units[0].GetCurrentHP()}\nATK: {units[0].GetCurrentATK()}";
-        unit2Text.text = $"{units[1].GetUnitName()}\nHP: {units[1].GetCurrentHP()}\nATK: {units[1].GetCurrentATK()}";
-        unit3Text.text = $"{units[2].GetUnitName()}\nHP: {units[2].GetCurrentHP()}\nATK: {units[2].GetCurrentATK()}";
+        unit1Text.text = $"{units[0].GetUnitType()}\nHP: {units[0].GetCurrentHP()}\nATK: {units[0].GetCurrentATK()}";
+        unit2Text.text = $"{units[1].GetUnitType()}\nHP: {units[1].GetCurrentHP()}\nATK: {units[1].GetCurrentATK()}";
+        unit3Text.text = $"{units[2].GetUnitType()}\nHP: {units[2].GetCurrentHP()}\nATK: {units[2].GetCurrentATK()}";
 
         baseText.text = $"Base HP: {baseunit.getBaseHP()}";
     }
