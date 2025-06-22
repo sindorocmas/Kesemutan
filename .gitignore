@@ -10,7 +10,9 @@
 UserSettings/
 
 # Visual Studio
+.vs/
 .vscode/
+.vs/
 *.csproj
 *.sln
 *.user
