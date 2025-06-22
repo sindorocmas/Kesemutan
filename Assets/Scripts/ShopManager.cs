@@ -70,9 +70,9 @@ public class ShopManager : MonoBehaviour
 
     void UpdateUnitStatus()
     {
-        unit1Text.text = $"{units[0].GetUnitType()}\nHP: {units[0].GetCurrentHP()}\nATK: {units[0].GetCurrentATK()}";
-        unit2Text.text = $"{units[1].GetUnitType()}\nHP: {units[1].GetCurrentHP()}\nATK: {units[1].GetCurrentATK()}";
-        unit3Text.text = $"{units[2].GetUnitType()}\nHP: {units[2].GetCurrentHP()}\nATK: {units[2].GetCurrentATK()}";
+        unit1Text.text = $"{units[0].GetUnitType()}\nHP: {units[0].GetMaxHP()}\nATK: {units[0].GetCurrentATK()}";
+        unit2Text.text = $"{units[1].GetUnitType()}\nHP: {units[1].GetMaxHP()}\nATK: {units[1].GetCurrentATK()}";
+        unit3Text.text = $"{units[2].GetUnitType()}\nHP: {units[2].GetMaxHP()}\nATK: {units[2].GetCurrentATK()}";
 
         baseText.text = $"Base HP: {baseunit.getBaseHP()}";
     }
