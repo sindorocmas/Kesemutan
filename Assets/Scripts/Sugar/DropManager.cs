@@ -104,4 +104,9 @@ public class DropManager : MonoBehaviour
     {
         return dropMultiplier;
     }
+
+    public int getDropUpgradeLevel()
+    {
+        return dropUpgradeLevel;
+    }
 }

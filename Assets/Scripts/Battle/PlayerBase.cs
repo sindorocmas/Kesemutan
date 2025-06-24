@@ -22,6 +22,7 @@ public class PlayerBase : MonoBehaviour
 
     private void Start()
     {
+        instance = this;
         if (spawnPoint == null)
         {
             CreateSpawnPoint();
@@ -126,9 +127,9 @@ public class PlayerBase : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SpawnDrone();
     }
 
-    public void healBase(int amount)
+    public void heal(int amount)
     {
-        currentHealth += 50;
+        currentHealth += amount;
     }
 
     public float getHealthPercent()

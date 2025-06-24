@@ -12,7 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private bool isSpawning = false;
 
     //untuk cek jumlah enemy yang hidup --> menentukan wave selesai atau belum
-    private int enemyCount;
+    private int totalEnemiesInWave;
+    private int enemiesRemaining;
     public static EnemySpawner instance;
 
     [Header("UI Management")] 
@@ -75,11 +76,16 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnWave(WaveData wave)
     {
         Debug.Log("Memulai Wave " + (currentWaveIndex + 1));
-        enemyCount = 0;
+        totalEnemiesInWave = 0;
         foreach (var action in wave.actions)
         {
-            enemyCount += action.count;
+            totalEnemiesInWave += action.count;
         }
+        enemiesRemaining = totalEnemiesInWave;
+        ui.UpdateEnemyProgress(0, totalEnemiesInWave);
+        
+        Debug.Log("Enemy remaining" + enemiesRemaining);
+        Debug.Log("Total enemies in wave " + totalEnemiesInWave);
         foreach (var action in wave.actions)
         {
             yield return new WaitForSeconds(action.delayBeforeAction);
@@ -106,10 +112,16 @@ public class EnemySpawner : MonoBehaviour
 
     public void EnemyDied()
     {
-        enemyCount--;
+        enemiesRemaining--;
+
+        int enemiesKilled = totalEnemiesInWave - enemiesRemaining;
+        ui.UpdateEnemyProgress(enemiesKilled, totalEnemiesInWave);
+        
+        Debug.Log("Enemy remaining" + enemiesRemaining);
+        Debug.Log("Total enemies in wave " + totalEnemiesInWave);
 
         //wave dicek selesai atau tidak berdasarkan status spawning dan jumlah enemy
-        if (enemyCount <= 0)
+        if (enemiesRemaining <= 0)
         {
             WaveFinished();
         }
@@ -130,7 +142,8 @@ public class EnemySpawner : MonoBehaviour
             PlayerPrefs.SetInt("Coins", totalCoins);
         }
 
-        Debug.Log("Wave " + (currentWaveIndex + 1) + " selesai! Tekan SPACE untuk wave berikutnya (jika ada).");
+        Debug.Log("Wave " + (currentWaveIndex + 1) + " selesai");
+        Debug.Log("Wave total: " + (waves.Count));
     }
 
     IEnumerator ShowUpgradePanel()
